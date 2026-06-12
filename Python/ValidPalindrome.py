@@ -1,16 +1,19 @@
-#Two pointer 
-class Solution {
-public:
-    bool isPalindrome(string s) {
-        std:: string cleanString = "";
-        for(char c : s)
-        {
-            if(isalnum(c)){
-                cleanString += tolower(c);
-            }
-        }
-        std::string reverse_string = cleanString;
-        std::reverse(reverse_string.begin(), reverse_string.end());
-        return cleanString == reverse_string;
-    }
-};
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        left = 0
+        right = len(s) - 1
+        while left < right:
+            if not s[left].isalnum():
+                left += 1
+            elif not s[right].isalnum():
+                right -= 1
+            elif s[left].lower() != s[right].lower():
+                return False
+            else:
+                left +=1
+                right -= 1
+        return True
